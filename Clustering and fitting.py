@@ -236,9 +236,9 @@ plt.show()
 
 # Create a linear regression object
 model = LinearRegression()
+print('gggg',np.shape(x1))
+print(np.shape(y2))
 
-
-#reshaping the x-axis to get a 2D array
 x1 = x1.reshape(-1, 1)
 #y2 = y2.reshape(1, -1)
 
