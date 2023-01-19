@@ -91,7 +91,7 @@ plt.show()
 #Some clustering algorithms are sensitive to the scale of the data, 
 #and this sensitivity can be reduced by normalizing the data.
 a = a / np.sqrt(np.sum(a ** 2))
-print(a)
+
 
 
 #To get the number of clusters 
