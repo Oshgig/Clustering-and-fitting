@@ -68,31 +68,51 @@ df_countries, df_year, df_data = data_frame(file, indicator)
 
 
 
-# Assume we have a DataFrame called 'df'
-
-# Get the column names
-column_names = df_year.columns
-
-# Print the column names
-print(column_names)
 
 
+#Pre processing of data 
 df_year = df_year.drop(0, axis=0)
 print(df_year)
 
 
-x_axis = df_year['Year']
-y_axis = df_year['China']
 
-# Plot the bar chart
-plt.bar(x_axis, y_axis)
+#Mergeing all the indicators in a single dataframe
+#drop NaN values
+df1 = df_year[df_year['Year'] == '1990']
+df2 = df_year[df_year['Year'] == '2005']
+df3 = df_year[df_year['Year'] == '2019']
+frames = [df1, df2, df3]
+df = pd.concat(frames)
+df = df.dropna(axis=1)
+print(df)
 
-# Add labels and title
-#plt.figure(figsize=(6, 6))
+
+
+
+# Define the data for the chart
+# Select the 'Angola', 'Brazil', and 'China' columns
+categories = ['1990', '2005', '2019']
+series1 = df['United States']
+series2 = df['China']
+series3 =  df['India']
+series4 = df['Zambia']
+
+# Setting the width of the bars
+bar_width = 0.2
+
+# Plot the series
+plt.bar(categories, series1, width=bar_width, label='USA')
+plt.bar(np.arange(len(categories))+bar_width, series2, width=bar_width, label='CHINA')
+plt.bar(np.arange(len(categories))+(2*bar_width), series3, width=bar_width, label='INDIA')
+
+
 plt.xlabel('Year')
-plt.ylabel('CO2 emission')
-plt.xticks(rotation=45, fontsize=7)
-plt.title('China Co2 emission')
-plt.savefig('CO2 emission.png', bbox_inches='tight', dpi=300)
-plt.show()
+plt.ylabel('Co2 emission')
+plt.title('Co2 emission of three countries')
+plt.savefig('Trend.png', bbox_inches='tight', dpi=300)
+plt.legend()
+
+
+
+
 
