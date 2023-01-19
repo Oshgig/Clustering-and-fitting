@@ -109,8 +109,9 @@ plt.bar(np.arange(len(categories))+(2*bar_width), series3, width=bar_width, labe
 plt.xlabel('Year')
 plt.ylabel('Co2 emission')
 plt.title('Co2 emission of three countries')
-plt.savefig('Trend.png', bbox_inches='tight', dpi=300)
 plt.legend()
+plt.savefig('Trend.png', bbox_inches='tight', dpi=300)
+plt.show()
 
 
 
